@@ -4,15 +4,16 @@
 	{
 		static void Main(string[] args)
 		{
-			// given a collection of N distinct elements
+			// given a collection of 3 or more distinct elements
 			int[] numbers = new int[]
 			{
-				1,2,3,4,5,6,7,8,9
+				1,2,3,4,5,6
 			};
+
+			int n = numbers.Length;
 
 			// that is shuffled in a random manner
 			Random rng = new Random();
-			int n = numbers.Length;
 			while (n > 1)
 			{
 				int k = rng.Next(n--);
@@ -31,10 +32,9 @@
 				queueB.Enqueue(item); // initial feeding of queueB with the original shuffled elements
 			}
 
-			int x = 0;
-			// if the randomized collection is then ran through, three elements at a time, four times in total,
-			// the fifth time will have the collection start over from the beginning, the first element will be the same prior to the looping
-			while (n < 4)
+			// if the randomized collection is then looped through three elements at a time, as many times as the total length of the collection,
+			// the mock collection will always be the same on the next loop
+			while (n < numbers.Length)
 			{
 
 				int repeater = 0;
